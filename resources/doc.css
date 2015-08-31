@@ -1,0 +1,159 @@
+.navigator {
+  background-color: #ffffff;
+}
+.ui.inverted.menu.doc-header {
+  border-radius: 0;
+  margin: 0px;
+  background: #353644;
+}
+.extends a {
+  margin-left: 0.5em;
+}
+.doc-body #sidebar {
+  height: 100%;
+  overflow: auto;
+  background-color: #3E3D49;
+}
+.doc-body #sidebar .ui.input {
+  margin: 1em;
+}
+.doc-body #sidebar .ui .item {
+  position: relative;
+  cursor: pointer;
+  height: 2em;
+  line-height: 2em;
+  padding: 0 0 0 0.65em;
+  color: rgba(240, 248, 255, 0.61);
+}
+.doc-body #sidebar .ui .item:hover {
+  background-color: #4ba575;
+  color: #ffffff;
+}
+.doc-body #sidebar .ui .item.hidden {
+  display: none;
+}
+.doc-body #sidebar .ui .item.active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.doc-body #sidebar .ui .item.active::before {
+  content: "";
+  float: right;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  bottom: 0px;
+  width: 2px;
+  border: 2px solid #4ba575;
+}
+.doc-body #sidebar .ui.segment {
+  background-color: transparent;
+}
+.doc-body #doc-content {
+  height: 100%;
+  overflow: auto;
+}
+.doc-body #doc-content > .v-box > .box {
+  padding: 1em 0 0 1em;
+}
+.ui.tab {
+  overflow: auto;
+  height: 100%;
+}
+.type {
+  display: inline-block;
+  margin-left: 1em;
+}
+.type::before {
+  content: "<";
+}
+.type::after {
+  content: ">";
+}
+.methods > .item,
+.attributes > .item,
+.events > .item {
+  padding: 0.5em 0 0.5em 1.5em;
+}
+.methods > .item .item-header em,
+.attributes > .item .item-header em,
+.events > .item .item-header em {
+  float: right;
+  margin-right: 1.5em;
+}
+.methods > .item .item-header .label,
+.attributes > .item .item-header .label,
+.events > .item .item-header .label {
+  margin-left: 1em;
+}
+.methods > .item .item-body,
+.attributes > .item .item-body,
+.events > .item .item-body {
+  font-size: 0.9em;
+  margin: 0.5em 0 0 1em;
+}
+.methods > .item .item-body .parameters > .label,
+.attributes > .item .item-body .parameters > .label,
+.events > .item .item-body .parameters > .label,
+.methods > .item .item-body .return > .label,
+.attributes > .item .item-body .return > .label,
+.events > .item .item-body .return > .label {
+  font-weight: bold;
+  line-height: 2.5em;
+}
+.methods > .item .item-body .parameters ul,
+.attributes > .item .item-body .parameters ul,
+.events > .item .item-body .parameters ul,
+.methods > .item .item-body .return ul,
+.attributes > .item .item-body .return ul,
+.events > .item .item-body .return ul {
+  margin: 0;
+}
+.methods > .item .item-body .parameters ul li,
+.attributes > .item .item-body .parameters ul li,
+.events > .item .item-body .parameters ul li,
+.methods > .item .item-body .return ul li,
+.attributes > .item .item-body .return ul li,
+.events > .item .item-body .return ul li {
+  margin-bottom: 0.25em;
+}
+.methods > .item:nth-of-type(even),
+.attributes > .item:nth-of-type(even),
+.events > .item:nth-of-type(even) {
+  background-color: #e3e3e3;
+}
+.methods > .item:nth-of-type(even) .prettyprint,
+.attributes > .item:nth-of-type(even) .prettyprint,
+.events > .item:nth-of-type(even) .prettyprint {
+  background-color: #f7faf8;
+}
+.intro .description {
+  min-height: 1em;
+}
+.description {
+  margin: 0;
+}
+.description .prettyprint {
+  display: block;
+  border-width: 0px;
+  background-color: #dcdfdd;
+  margin-right: 1.5em;
+  padding: 1em;
+}
+.ui.secondary.pointing.menu .active.item {
+  border-color: #4ba575;
+}
+.ui.secondary.pointing.menu .active.item:hover {
+  border-color: #4ba575;
+}
+.ui.header:not(.item) {
+  color: #555 !important;
+}
+body {
+  color: #555 !important;
+}
+body a {
+  color: #4ba575;
+}
+body a:hover {
+  color: #555 !important;
+}

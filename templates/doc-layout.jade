@@ -1,0 +1,30 @@
+doctype html
+html
+	head
+		title= title
+		meta(charset="utf-8")
+		meta(name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1")
+		link(rel="stylesheet" type="text/css" href="./resources/3rd.css")
+		link(rel="stylesheet" type="text/css" href="./resources/doc.css")
+	body.v-box
+		mixin _makeSlideBar(items)
+			.ui.list
+				each item in items
+					- var href="./"+item+".html"
+
+					a.item(class= item === title ? "active" : "" href=href)= item
+
+		.ui.inverted.menu.doc-header.box
+			.ui.header.item Dorado UI API
+		.flex-box
+			.row.doc-body
+				.small-0.medium-3.large-2.columns#sidebar
+					.ui.icon.input.fluid.inverted.transparent
+						input#searchInput(type="text" placeholder="搜索...")
+						i.search.icon
+					+_makeSlideBar(aliasNames)
+
+				.small-12.medium-9.large-10.columns#doc-content
+					block content
+	script(src="./resources/3rd.js")
+	script(src="./resources/doc.js")

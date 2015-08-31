@@ -1,0 +1,106 @@
+extends doc-layout
+block content
+	- var eventReturns = "是否要继续后续事件的触发操作，不提供返回值时系统将按照返回值为<code>true</code>进行处理";
+	.v-box(style={height: "100%"})
+		.box
+			h2.ui.header= title
+			if alias.super
+				.extends Extends:
+					a(href="./" + alias.super + ".html")= alias.super
+			.intro
+				.sub.header= alias.label
+				.description= alias.description || ""
+			.ui.pointing.secondary.menu
+				if alias.attributes
+					a(class="item active" data-tab="attributes") Attributes
+				if alias.methods
+					a.item(class= alias.attributes ? "" : "active" data-tab="methods") Methods
+				if alias.events
+					a.item(class= alias.methods ? "" : "active" data-tab="events") Events
+
+		.flex-box
+			div
+				if alias.attributes
+					.ui.tab(data-tab="attributes" class="active")
+						.ui.attributes
+							each item in alias.attributes
+								.item
+									.item-header
+										strong=item.name
+										.type=item.type || "String"
+										if item.defaultValue != null
+											span.default-value=":" + item.defaultValue
+										em
+											a(href="./" + item.memberOf + ".html")
+												code=item.memberOf
+									.item-body
+										.label=item.label
+										if item.enum
+											.ui.labels
+												each enumItem in item.enum
+													.ui.label.mini.horizontal.teal=enumItem || '""'
+										pre.description!=item.description
+				if alias.methods
+					.ui.tab(data-tab="methods" class= alias.attributes ? "" : "active")
+						.ui.methods
+							each item in alias.methods
+								.item
+									.item-header
+										strong=item.name
+										span.label=item.label
+										em
+											a(href="./" + item.memberOf + ".html")
+												code=item.memberOf
+									.item-body
+
+										if item.arguments
+											.parameters
+												.label Parameters:
+												ul
+													each param in item.arguments
+														li.param
+															span.name.ui.label.mini.horizontal= param.name
+															span.type= param.type
+															.label!= param.description || param.label
+										.return
+											span.label Returns:
+											span.type=item.type || "void"
+
+										pre.description!=item.description
+
+				if alias.events
+					.ui.tab(data-tab="events" class= alias.methods ? "" : "active")
+						.ui.events
+							each item in alias.events
+								.item
+									.item-header
+										strong=item.name
+										span.label=item.label
+										em
+											a(href="./" + item.memberOf + ".html")
+												code=item.memberOf
+									.item-body
+										if item.arguments
+											.parameters
+												.label Parameters:
+												ul
+													each param in item.arguments
+														li.param
+															span.name.ui.label.mini.horizontal= param.name
+															span.type Object
+															.label= param.label
+															if param.properties
+																ul
+																	each prop in param.properties
+																		li
+																			span.name.ui.label.horizontal=prop.name + ":"
+																			span.type=prop.type || "Object"
+																			div.desc=prop.description
+										pre.description!=item.description
+										.return
+											span.label Returns:
+											.desc !{eventReturns}
+
+
+
+
