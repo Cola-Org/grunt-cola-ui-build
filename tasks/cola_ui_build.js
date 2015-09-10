@@ -215,7 +215,7 @@ module.exports = function (grunt) {
 				var tabs = ["attributes", "properties", "methods", "events"];
 				for (var i = 0; i < tabs.length; i++) {
 					var tabName = tabs[i];
-					if (alias[tabName] && alias[alias].length > 0) {
+					if (alias[tabName] && alias[tabName].length > 0) {
 						alias.activeTab = tabName;
 						break;
 					}
