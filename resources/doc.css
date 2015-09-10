@@ -71,59 +71,71 @@
 }
 .methods > .item,
 .attributes > .item,
-.events > .item {
+.events > .item,
+.properties > .item {
   padding: 0.5em 0 0.5em 1.5em;
 }
 .methods > .item .item-header em,
 .attributes > .item .item-header em,
-.events > .item .item-header em {
+.events > .item .item-header em,
+.properties > .item .item-header em {
   float: right;
   margin-right: 1.5em;
 }
 .methods > .item .item-header .label,
 .attributes > .item .item-header .label,
-.events > .item .item-header .label {
+.events > .item .item-header .label,
+.properties > .item .item-header .label {
   margin-left: 1em;
 }
 .methods > .item .item-body,
 .attributes > .item .item-body,
-.events > .item .item-body {
+.events > .item .item-body,
+.properties > .item .item-body {
   font-size: 0.9em;
   margin: 0.5em 0 0 1em;
 }
 .methods > .item .item-body .parameters > .label,
 .attributes > .item .item-body .parameters > .label,
 .events > .item .item-body .parameters > .label,
+.properties > .item .item-body .parameters > .label,
 .methods > .item .item-body .return > .label,
 .attributes > .item .item-body .return > .label,
-.events > .item .item-body .return > .label {
+.events > .item .item-body .return > .label,
+.properties > .item .item-body .return > .label {
   font-weight: bold;
   line-height: 2.5em;
 }
 .methods > .item .item-body .parameters ul,
 .attributes > .item .item-body .parameters ul,
 .events > .item .item-body .parameters ul,
+.properties > .item .item-body .parameters ul,
 .methods > .item .item-body .return ul,
 .attributes > .item .item-body .return ul,
-.events > .item .item-body .return ul {
+.events > .item .item-body .return ul,
+.properties > .item .item-body .return ul {
   margin: 0;
 }
 .methods > .item .item-body .parameters ul li,
 .attributes > .item .item-body .parameters ul li,
 .events > .item .item-body .parameters ul li,
+.properties > .item .item-body .parameters ul li,
 .methods > .item .item-body .return ul li,
 .attributes > .item .item-body .return ul li,
-.events > .item .item-body .return ul li {
+.events > .item .item-body .return ul li,
+.properties > .item .item-body .return ul li {
   margin-bottom: 0.25em;
 }
 .methods > .item:nth-of-type(even),
 .attributes > .item:nth-of-type(even),
-.events > .item:nth-of-type(even) {
+.events > .item:nth-of-type(even),
+.properties > .item:nth-of-type(even) {
   background-color: #e3e3e3;
 }
 .methods > .item:nth-of-type(even) .prettyprint,
 .attributes > .item:nth-of-type(even) .prettyprint,
-.events > .item:nth-of-type(even) .prettyprint {
+.events > .item:nth-of-type(even) .prettyprint,
+.properties > .item:nth-of-type(even) .prettyprint {
   background-color: #f7faf8;
 }
 .intro .description {

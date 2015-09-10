@@ -1,0 +1,168 @@
+.navigator {
+	background-color: #ffffff;
+}
+
+.ui.inverted.menu.doc-header {
+	border-radius: 0;
+	margin: 0px;
+	background: #353644;
+}
+
+.extends {
+	a {
+		margin-left: 0.5em;
+	}
+}
+
+.doc-body {
+	#sidebar {
+		height: 100%;
+		overflow: auto;
+		.ui.input {
+			margin: 1em;
+		}
+		background-color: #3E3D49;
+
+		.ui {
+			.item {
+				position: relative;
+				cursor: pointer;
+				height: 2em;
+				line-height: 2em;
+				padding: 0 0 0 0.65em;
+				color: rgba(240, 248, 255, 0.61);
+				&:hover {
+					background-color: #4ba575;
+					color: #ffffff;
+				}
+				&.hidden {
+					display: none;
+				}
+
+				&.active {
+					&::before {
+						content: "";
+						float: right;
+						position: absolute;
+						left: 0;
+						top: 0px;
+						bottom: 0px;
+						width: 2px;
+						border: 2px solid #4ba575;
+					}
+					background-color: rgba(255, 255, 255, 0.05);
+				}
+			}
+
+		}
+		.ui.segment {
+			background-color: transparent;
+		}
+	}
+	#doc-content {
+		height: 100%;
+		overflow: auto;
+		> .v-box {
+			> .box {
+				padding: 1em 0 0 1em;
+			}
+		}
+	}
+}
+
+.ui.tab {
+	overflow: auto;
+	height: 100%;
+}
+
+.type {
+	display: inline-block;
+	margin-left: 1em;
+	&::before {
+		content: "<";
+	}
+	&::after {
+		content: ">";
+	}
+}
+
+.methods, .attributes, .events, .properties {
+	> .item {
+		padding: 0.5em 0 0.5em 1.5em;
+		.item-header {
+			em {
+				float: right;
+				margin-right: 1.5em;
+			}
+			.label {
+				margin-left: 1em;
+			}
+		}
+		.item-body {
+			font-size: 0.9em;
+			margin: 0.5em 0 0 1em;
+			.parameters, .return {
+				> .label {
+					font-weight: bold;
+					line-height: 2.5em;
+				}
+				ul {
+					margin: 0;
+					li {
+						margin-bottom: 0.25em;
+						//ul>li{
+						//	.name{
+						//		color: #4ba575;
+						//	}
+						//}
+					}
+				}
+			}
+		}
+		&:nth-of-type(even) {
+			background-color: #e3e3e3;
+			.prettyprint {
+				background-color: rgb(247, 250, 248);
+
+			}
+		}
+	}
+}
+
+.intro {
+	.description {
+		min-height: 1em;
+	}
+}
+
+.description {
+	margin: 0;
+	.prettyprint {
+		display: block;
+		border-width: 0px;
+		background-color: rgb(220, 223, 221);
+		margin-right: 1.5em;
+		padding: 1em;
+	}
+}
+
+.ui.secondary.pointing.menu .active.item {
+	border-color: #4ba575;
+	&:hover {
+		border-color: #4ba575;
+	}
+}
+
+.ui.header:not(.item) {
+	color: #555 !important;
+}
+
+body {
+	color: #555 !important;
+	a {
+		color: #4ba575;
+		&:hover {
+			color: #555 !important;
+		}
+	}
+}
