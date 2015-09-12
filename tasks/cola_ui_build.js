@@ -66,6 +66,7 @@ module.exports = function (grunt) {
 			ignored: null,
 			space: 2,
 			strict: false,
+			version: "<VERSION>",
 			readEncoding: grunt.file.defaultEncoding,
 			writeEncoding: grunt.file.defaultEncoding
 		});
@@ -104,6 +105,7 @@ module.exports = function (grunt) {
 			if (name === "methods") {
 				_.each(items, function (item) {
 					if (!/\)$/.test(item.name)) {
+						item.key = item.name;
 						var argName = "(", args = item.arguments;
 						if (args) {
 							for (var i = 0; i < args.length; i++) {
@@ -115,6 +117,7 @@ module.exports = function (grunt) {
 							}
 						}
 						argName += ")";
+
 						item.name = item.name + argName;
 					}
 				})
@@ -209,7 +212,17 @@ module.exports = function (grunt) {
 		});
 		var dest = path.join(process.cwd(), options.output);
 		var tamplate = path.join(__dirname, "..", "templates", "doc.jade");
+		var topNames = ["window"];
 
+		aliasNames = aliasNames.sort();
+		for (var i = 0; i < topNames.length; i++) {
+			var nameItem = topNames[i];
+			var index = aliasNames.indexOf(nameItem);
+			if (index > -1) {
+				aliasNames.splice(index, 1);
+				aliasNames.unshift(nameItem);
+			}
+		}
 		_.each(SYMBOLS, function (alias, name) {
 				var htmlFile = path.join(dest, name + ".html");
 				var tabs = ["attributes", "properties", "methods", "events"];
@@ -219,9 +232,13 @@ module.exports = function (grunt) {
 						alias.activeTab = tabName;
 						break;
 					}
-
 				}
-				var html = jade.renderFile(tamplate, {title: name, aliasNames: aliasNames, alias: alias});
+				var html = jade.renderFile(tamplate, {
+					title: name,
+					aliasNames: aliasNames,
+					alias: alias,
+					version: options.version
+				});
 				grunt.file.write(htmlFile, html);
 			}
 		)

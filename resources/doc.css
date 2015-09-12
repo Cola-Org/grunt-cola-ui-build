@@ -9,33 +9,44 @@
 .extends a {
   margin-left: 0.5em;
 }
-.doc-body #sidebar {
+.doc-body #sidebar,
+.doc-body #toc {
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   background-color: #3E3D49;
 }
-.doc-body #sidebar .ui.input {
+.doc-body #sidebar:hover,
+.doc-body #toc:hover {
+  overflow-y: auto;
+}
+.doc-body #sidebar .ui.input,
+.doc-body #toc .ui.input {
   margin: 1em;
 }
-.doc-body #sidebar .ui .item {
+.doc-body #sidebar .ui .item,
+.doc-body #toc .ui .item {
   position: relative;
   cursor: pointer;
   height: 2em;
   line-height: 2em;
-  padding: 0 0 0 0.65em;
+  padding: 0 0 0 1.5em;
   color: rgba(240, 248, 255, 0.61);
 }
-.doc-body #sidebar .ui .item:hover {
+.doc-body #sidebar .ui .item:hover,
+.doc-body #toc .ui .item:hover {
   background-color: #4ba575;
   color: #ffffff;
 }
-.doc-body #sidebar .ui .item.hidden {
+.doc-body #sidebar .ui .item.hidden,
+.doc-body #toc .ui .item.hidden {
   display: none;
 }
-.doc-body #sidebar .ui .item.active {
+.doc-body #sidebar .ui .item.active,
+.doc-body #toc .ui .item.active {
   background-color: rgba(255, 255, 255, 0.05);
 }
-.doc-body #sidebar .ui .item.active::before {
+.doc-body #sidebar .ui .item.active::before,
+.doc-body #toc .ui .item.active::before {
   content: "";
   float: right;
   position: absolute;
@@ -45,7 +56,8 @@
   width: 2px;
   border: 2px solid #4ba575;
 }
-.doc-body #sidebar .ui.segment {
+.doc-body #sidebar .ui.segment,
+.doc-body #toc .ui.segment {
   background-color: transparent;
 }
 .doc-body #doc-content {
@@ -69,11 +81,61 @@
 .type::after {
   content: ">";
 }
+@-webkit-keyframes targetBackgroundFlash {
+  0% {
+    background-color: rgba(51, 112, 79, 0);
+  }
+  25% {
+    background-color: rgba(60, 132, 93, 0.5);
+  }
+  50% {
+    background-color: rgba(51, 112, 79, 0);
+  }
+  75% {
+    background-color: rgba(60, 132, 93, 0.5);
+  }
+  100% {
+    background-color: rgba(51, 112, 79, 0);
+  }
+}
+@keyframes targetBackgroundFlash {
+  0% {
+    background-color: rgba(51, 112, 79, 0);
+  }
+  25% {
+    background-color: rgba(60, 132, 93, 0.5);
+  }
+  50% {
+    background-color: rgba(51, 112, 79, 0);
+  }
+  75% {
+    background-color: rgba(60, 132, 93, 0.5);
+  }
+  100% {
+    background-color: rgba(51, 112, 79, 0);
+  }
+}
 .methods > .item,
 .attributes > .item,
 .events > .item,
 .properties > .item {
   padding: 0.5em 0 0.5em 1.5em;
+}
+.methods > .item .ui.labels .label,
+.attributes > .item .ui.labels .label,
+.events > .item .ui.labels .label,
+.properties > .item .ui.labels .label {
+  border-radius: 0;
+  background-color: #4ba575 !important;
+  border-color: #4ba575 !important;
+  color: #ffffff !important;
+}
+.methods > .item.target,
+.attributes > .item.target,
+.events > .item.target,
+.properties > .item.target {
+  animation: targetBackgroundFlash 1.5s;
+  -webkit-animation: targetBackgroundFlash 1.5s;
 }
 .methods > .item .item-header em,
 .attributes > .item .item-header em,
@@ -87,6 +149,24 @@
 .events > .item .item-header .label,
 .properties > .item .item-header .label {
   margin-left: 1em;
+}
+.methods > .item .item-header .default-value,
+.attributes > .item .item-header .default-value,
+.events > .item .item-header .default-value,
+.properties > .item .item-header .default-value {
+  margin-left: 0.5em;
+}
+.methods > .item .item-header .default-value::before,
+.attributes > .item .item-header .default-value::before,
+.events > .item .item-header .default-value::before,
+.properties > .item .item-header .default-value::before {
+  content: "( =";
+}
+.methods > .item .item-header .default-value::after,
+.attributes > .item .item-header .default-value::after,
+.events > .item .item-header .default-value::after,
+.properties > .item .item-header .default-value::after {
+  content: " )";
 }
 .methods > .item .item-body,
 .attributes > .item .item-body,
@@ -138,6 +218,12 @@
 .properties > .item:nth-of-type(even) .prettyprint {
   background-color: #f7faf8;
 }
+.methods > .item:nth-of-type(even) .ui.label,
+.attributes > .item:nth-of-type(even) .ui.label,
+.events > .item:nth-of-type(even) .ui.label,
+.properties > .item:nth-of-type(even) .ui.label {
+  background-color: rgba(251, 250, 250, 0.85);
+}
 .intro .description {
   min-height: 1em;
 }
@@ -168,4 +254,54 @@ body a {
 }
 body a:hover {
   color: #555 !important;
+}
+@media only screen and (max-width: 48em) {
+  #toc {
+    display: none;
+  }
+}
+@media only screen and (min-width: 48.0625em) {
+  #sidebar {
+    display: none;
+  }
+  #showSidebarBtn {
+    display: none !important;
+  }
+}
+#sidebar .v-box {
+  height: 100%;
+}
+#sidebar .v-box .flex-box {
+  background-color: #ffffff;
+}
+#sidebar .v-box .flex-box .ui .item {
+  position: relative;
+  cursor: pointer;
+  height: 3em;
+  line-height: 3em;
+  padding: 0 0 0 2em;
+  color: #353644;
+}
+#sidebar .v-box .flex-box .ui .item:hover {
+  background-color: rgba(56, 123, 87, 0.37) !important;
+  color: #ffffff;
+}
+#sidebar .v-box .flex-box .ui .item.hidden {
+  display: none;
+}
+#sidebar .v-box .flex-box .ui .item.active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+#sidebar .v-box .flex-box .ui .item.active::before {
+  content: "";
+  float: right;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  bottom: 0px;
+  width: 2px;
+  border: 2px solid #4ba575;
+}
+#sidebar .v-box .flex-box .ui .item:nth-of-type(even) {
+  background-color: #e5e5e5;
 }

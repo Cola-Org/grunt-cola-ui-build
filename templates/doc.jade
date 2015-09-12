@@ -27,11 +27,11 @@ block content
 						.ui.attributes
 							each item in alias.attributes
 								.item
-									.item-header
+									.item-header(data-key=item.name)
 										strong=item.name
 										.type=item.type || "String"
 										if item.defaultValue != null
-											span.default-value=":" + item.defaultValue
+											span.default-value= item.defaultValue
 										em
 											a(href="./" + item.memberOf + ".html")
 												code=item.memberOf
@@ -40,18 +40,18 @@ block content
 										if item.enum
 											.ui.labels
 												each enumItem in item.enum
-													.ui.label.mini.horizontal.teal=enumItem || '""'
+													.ui.label.mini.horizontal=enumItem || '""'
 										pre.description!=item.description
 				if alias.properties
 					.ui.tab(data-tab="properties" class= alias.activeTab == "properties" ? "active" : "")
 						.ui.properties
 							each item in alias.properties
 								.item
-									.item-header
+									.item-header(data-key=item.name)
 										strong=item.name
 										.type=item.type || "String"
 										if item.defaultValue != null
-											span.default-value=":" + item.defaultValue
+											span.default-value=item.defaultValue
 										em
 											a(href="./" + item.memberOf + ".html")
 												code=item.memberOf
@@ -60,14 +60,14 @@ block content
 										if item.enum
 											.ui.labels
 												each enumItem in item.enum
-													.ui.label.mini.horizontal.teal=enumItem || '""'
+													.ui.label.mini.horizontal=enumItem || '""'
 										pre.description!=item.description
 				if alias.methods
 					.ui.tab(data-tab="methods" class= alias.activeTab == "methods" ? "active" : "")
 						.ui.methods
 							each item in alias.methods
 								.item
-									.item-header
+									.item-header(data-key=item.key)
 										strong=item.name
 										span.label=item.label
 										em
@@ -95,7 +95,7 @@ block content
 						.ui.events
 							each item in alias.events
 								.item
-									.item-header
+									.item-header(data-key=item.name)
 										strong=item.name
 										span.label=item.label
 										em

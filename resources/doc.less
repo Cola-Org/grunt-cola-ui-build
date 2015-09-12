@@ -15,9 +15,13 @@
 }
 
 .doc-body {
-	#sidebar {
+	#sidebar, #toc {
 		height: 100%;
-		overflow: auto;
+		overflow: hidden;
+		&:hover {
+			overflow-y: auto;
+		}
+
 		.ui.input {
 			margin: 1em;
 		}
@@ -29,7 +33,7 @@
 				cursor: pointer;
 				height: 2em;
 				line-height: 2em;
-				padding: 0 0 0 0.65em;
+				padding: 0 0 0 1.5em;
 				color: rgba(240, 248, 255, 0.61);
 				&:hover {
 					background-color: #4ba575;
@@ -86,8 +90,56 @@
 	}
 }
 
+@-webkit-keyframes targetBackgroundFlash {
+	0% {
+		background-color: rgba(51, 112, 79, 0);
+	}
+	25% {
+		background-color: rgba(60, 132, 93, 0.5);
+	}
+	50% {
+		background-color: rgba(51, 112, 79, 0);
+	}
+	75% {
+		background-color: rgba(60, 132, 93, 0.5);
+	}
+	100% {
+		background-color: rgba(51, 112, 79, 0);
+	}
+}
+
+@keyframes targetBackgroundFlash {
+	0% {
+		background-color: rgba(51, 112, 79, 0);
+	}
+	25% {
+		background-color: rgba(60, 132, 93, 0.5);
+	}
+	50% {
+		background-color: rgba(51, 112, 79, 0);
+	}
+	75% {
+		background-color: rgba(60, 132, 93, 0.5);
+	}
+	100% {
+		background-color: rgba(51, 112, 79, 0);
+	}
+}
+
 .methods, .attributes, .events, .properties {
 	> .item {
+		.ui.labels {
+			.label {
+				border-radius: 0;
+				background-color: #4ba575 !important;
+				border-color: #4ba575 !important;
+				color: #ffffff !important;
+			}
+		}
+		&.target {
+			animation: targetBackgroundFlash 1.5s;
+			-webkit-animation: targetBackgroundFlash 1.5s;
+		}
 		padding: 0.5em 0 0.5em 1.5em;
 		.item-header {
 			em {
@@ -96,6 +148,15 @@
 			}
 			.label {
 				margin-left: 1em;
+			}
+			.default-value {
+				margin-left: 0.5em;
+				&::before {
+					content: "( =";
+				}
+				&::after {
+					content: " )";
+				}
 			}
 		}
 		.item-body {
@@ -110,11 +171,6 @@
 					margin: 0;
 					li {
 						margin-bottom: 0.25em;
-						//ul>li{
-						//	.name{
-						//		color: #4ba575;
-						//	}
-						//}
 					}
 				}
 			}
@@ -123,9 +179,12 @@
 			background-color: #e3e3e3;
 			.prettyprint {
 				background-color: rgb(247, 250, 248);
-
+			}
+			.ui.label {
+				background-color: rgba(251, 250, 250, 0.85);
 			}
 		}
+
 	}
 }
 
@@ -165,4 +224,68 @@ body {
 			color: #555 !important;
 		}
 	}
+}
+
+@media only screen and (max-width: 48em) {
+	#toc {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 48.0625em) {
+	#sidebar {
+		display: none;
+	}
+
+	#showSidebarBtn {
+		display: none !important;
+	}
+}
+
+#sidebar {
+	.v-box {
+		height: 100%;
+		.flex-box {
+			background-color: #ffffff;
+
+			.ui {
+				.item {
+					position: relative;
+					cursor: pointer;
+					height: 3em;
+					line-height: 3em;
+					padding: 0 0 0 2em;
+					color: #353644;
+					&:hover {
+						background-color: rgba(56, 123, 87, 0.37) !important;
+						color: #ffffff;
+					}
+					&.hidden {
+						display: none;
+					}
+					&.active {
+						&::before {
+							content: "";
+							float: right;
+							position: absolute;
+							left: 0;
+							top: 0px;
+							bottom: 0px;
+							width: 2px;
+							border: 2px solid #4ba575;
+						}
+						background-color: rgba(255, 255, 255, 0.05);
+					}
+
+					&:nth-of-type(even) {
+						background-color: #e5e5e5;
+					}
+
+				}
+
+			}
+		}
+
+	}
+
 }
