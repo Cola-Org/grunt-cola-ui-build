@@ -81,8 +81,10 @@ cola.ready(function () {
 							.animate({
 								scrollTop: itemPosition - tabTopPosition
 							}, 500, function () {
-								//$itemDom.transition('flash');
 								$itemDom.addClass('target');
+								setTimeout(function () {
+									$itemDom.removeClass('target');
+								}, 1000)
 							})
 					}
 				}
