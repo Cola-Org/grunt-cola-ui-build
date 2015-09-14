@@ -82,37 +82,13 @@
   content: ">";
 }
 @-webkit-keyframes targetBackgroundFlash {
-  0% {
-    background-color: rgba(51, 112, 79, 0);
-  }
-  25% {
-    background-color: rgba(60, 132, 93, 0.5);
-  }
   50% {
-    background-color: rgba(51, 112, 79, 0);
-  }
-  75% {
     background-color: rgba(60, 132, 93, 0.5);
-  }
-  100% {
-    background-color: rgba(51, 112, 79, 0);
   }
 }
 @keyframes targetBackgroundFlash {
-  0% {
-    background-color: rgba(51, 112, 79, 0);
-  }
-  25% {
-    background-color: rgba(60, 132, 93, 0.5);
-  }
   50% {
-    background-color: rgba(51, 112, 79, 0);
-  }
-  75% {
     background-color: rgba(60, 132, 93, 0.5);
-  }
-  100% {
-    background-color: rgba(51, 112, 79, 0);
   }
 }
 .methods > .item,
@@ -258,6 +234,65 @@ body a:hover {
 @media only screen and (max-width: 48em) {
   #toc {
     display: none;
+  }
+  .methods > .item,
+  .attributes > .item,
+  .events > .item,
+  .properties > .item {
+    padding: 0.5em 0 0.5em 1.5em;
+  }
+  .methods > .item .ui.labels .label,
+  .attributes > .item .ui.labels .label,
+  .events > .item .ui.labels .label,
+  .properties > .item .ui.labels .label {
+    border-radius: 0;
+    background-color: #4ba575 !important;
+    border-color: #4ba575 !important;
+    color: #ffffff !important;
+  }
+  .methods > .item.target,
+  .attributes > .item.target,
+  .events > .item.target,
+  .properties > .item.target {
+    animation: targetBackgroundFlash 1.5s;
+    -webkit-animation: targetBackgroundFlash 1.5s;
+  }
+  .methods > .item .item-header,
+  .attributes > .item .item-header,
+  .events > .item .item-header,
+  .properties > .item .item-header {
+    line-height: 1.5em;
+  }
+  .methods > .item .item-header strong,
+  .attributes > .item .item-header strong,
+  .events > .item .item-header strong,
+  .properties > .item .item-header strong {
+    margin-bottom: 0.5em !important;
+  }
+  .methods > .item .item-header em,
+  .attributes > .item .item-header em,
+  .events > .item .item-header em,
+  .properties > .item .item-header em {
+    float: none;
+  }
+  .methods > .item .item-header > *,
+  .attributes > .item .item-header > *,
+  .events > .item .item-header > *,
+  .properties > .item .item-header > * {
+    display: block !important;
+    margin: 0 !important;
+  }
+  .methods > .item .item-header .default-value > *,
+  .attributes > .item .item-header .default-value > *,
+  .events > .item .item-header .default-value > *,
+  .properties > .item .item-header .default-value > * {
+    margin: 0;
+  }
+  .methods > .item .item-body,
+  .attributes > .item .item-body,
+  .events > .item .item-body,
+  .properties > .item .item-body {
+    margin: 0 !important;
   }
 }
 @media only screen and (min-width: 48.0625em) {

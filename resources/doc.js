@@ -46,13 +46,25 @@ cola.ready(function () {
 				$dom.toggleClass("hidden", !state);
 			})
 		});
+		var tabNameMapping = {
+			method: "methods",
+			attribute: "attributes",
+			property: "methods",
+			event: "events"
+		};
+
+
 		if (hash) {
 			hash = hash.substring(1, hash.length);
-			if (hash.indexOf(":")) {
+			if (hash.indexOf(":") > -1) {
 				var target = hash.split(":");
-				tabName = target[0];
+				tabName = tabNameMapping[target[0]];
 				itemName = target[1];
+			} else {
+				tabName = "attributes"
+				itemName = hash
 			}
+
 			if (tabName) {
 				$(".menu .item").tab("change tab", tabName);
 

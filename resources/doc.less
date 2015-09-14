@@ -91,39 +91,15 @@
 }
 
 @-webkit-keyframes targetBackgroundFlash {
-	0% {
-		background-color: rgba(51, 112, 79, 0);
-	}
-	25% {
-		background-color: rgba(60, 132, 93, 0.5);
-	}
 	50% {
-		background-color: rgba(51, 112, 79, 0);
-	}
-	75% {
 		background-color: rgba(60, 132, 93, 0.5);
-	}
-	100% {
-		background-color: rgba(51, 112, 79, 0);
 	}
 }
-
 @keyframes targetBackgroundFlash {
-	0% {
-		background-color: rgba(51, 112, 79, 0);
-	}
-	25% {
-		background-color: rgba(60, 132, 93, 0.5);
-	}
 	50% {
-		background-color: rgba(51, 112, 79, 0);
-	}
-	75% {
 		background-color: rgba(60, 132, 93, 0.5);
 	}
-	100% {
-		background-color: rgba(51, 112, 79, 0);
-	}
+
 }
 
 .methods, .attributes, .events, .properties {
@@ -230,6 +206,45 @@ body {
 	#toc {
 		display: none;
 	}
+
+	.methods, .attributes, .events, .properties {
+		> .item {
+			.ui.labels {
+				.label {
+					border-radius: 0;
+					background-color: #4ba575 !important;
+					border-color: #4ba575 !important;
+					color: #ffffff !important;
+				}
+			}
+			&.target {
+				animation: targetBackgroundFlash 1.5s;
+				-webkit-animation: targetBackgroundFlash 1.5s;
+			}
+			padding: 0.5em 0 0.5em 1.5em;
+			.item-header {
+				line-height: 1.5em;
+				strong{
+					margin-bottom: 0.5em !important;
+				}
+				em {
+					float: none;
+				}
+				> *{
+					display: block !important;
+					margin: 0 !important;
+				}
+				.default-value{
+					>*{
+						margin: 0;
+					}
+				}
+			}
+			.item-body{
+				margin: 0 !important;
+			}
+		}
+	}
 }
 
 @media only screen and (min-width: 48.0625em) {
@@ -247,7 +262,6 @@ body {
 		height: 100%;
 		.flex-box {
 			background-color: #ffffff;
-
 			.ui {
 				.item {
 					position: relative;
