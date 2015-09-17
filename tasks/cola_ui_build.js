@@ -2,7 +2,7 @@
  * grunt-cola-ui-build
  * https://github.com/Cola-Org/grunt-cola-ui-build
  *
- * Copyright (c) 2015 alextong
+ * Copyright (c) 2015 alex.tong007@gmail.com
  * Licensed under the MIT license.
  */
 
@@ -12,9 +12,6 @@ var path = require('path'),
 	_ = require('lodash'),
 	jade = require('jade');
 module.exports = function (grunt) {
-
-	// Please see the Grunt documentation for more information regarding task
-	// creation: http://gruntjs.com/creating-tasks
 
 	var yamlSchema = null;
 	var strictOption = false;
@@ -66,6 +63,7 @@ module.exports = function (grunt) {
 			ignored: null,
 			space: 2,
 			strict: false,
+			header: "Cola UI API-<VERSION>",
 			version: "<VERSION>",
 			readEncoding: grunt.file.defaultEncoding,
 			writeEncoding: grunt.file.defaultEncoding
@@ -237,7 +235,8 @@ module.exports = function (grunt) {
 					title: name,
 					aliasNames: aliasNames,
 					alias: alias,
-					version: options.version
+					version: options.version,
+					header: options.header
 				});
 				grunt.file.write(htmlFile, html);
 			}

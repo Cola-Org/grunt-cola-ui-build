@@ -95,6 +95,7 @@
 		background-color: rgba(60, 132, 93, 0.5);
 	}
 }
+
 @keyframes targetBackgroundFlash {
 	50% {
 		background-color: rgba(60, 132, 93, 0.5);
@@ -147,12 +148,16 @@
 					margin: 0;
 					li {
 						margin-bottom: 0.25em;
+						.desc {
+							line-height: 2.5em;
+						}
 					}
 				}
+
 			}
 		}
 		&:nth-of-type(even) {
-			background-color: #e3e3e3;
+			background-color: rgba(227, 227, 227, 0.5);;
 			.prettyprint {
 				background-color: rgb(247, 250, 248);
 			}
@@ -167,6 +172,10 @@
 .intro {
 	.description {
 		min-height: 1em;
+		ul {
+			margin: 1em;
+			line-height: 1.5em;
+		}
 	}
 }
 
@@ -178,6 +187,10 @@
 		background-color: rgb(220, 223, 221);
 		margin-right: 1.5em;
 		padding: 1em;
+	}
+	ul {
+		margin: 0px;
+		line-height: 0.75em;
 	}
 }
 
@@ -224,23 +237,23 @@ body {
 			padding: 0.5em 0 0.5em 1.5em;
 			.item-header {
 				line-height: 1.5em;
-				strong{
+				strong {
 					margin-bottom: 0.5em !important;
 				}
 				em {
 					float: none;
 				}
-				> *{
+				> * {
 					display: block !important;
 					margin: 0 !important;
 				}
-				.default-value{
-					>*{
+				.default-value {
+					> * {
 						margin: 0;
 					}
 				}
 			}
-			.item-body{
+			.item-body {
 				margin: 0 !important;
 			}
 		}

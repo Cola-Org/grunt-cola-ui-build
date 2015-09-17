@@ -182,11 +182,21 @@
 .properties > .item .item-body .return ul li {
   margin-bottom: 0.25em;
 }
+.methods > .item .item-body .parameters ul li .desc,
+.attributes > .item .item-body .parameters ul li .desc,
+.events > .item .item-body .parameters ul li .desc,
+.properties > .item .item-body .parameters ul li .desc,
+.methods > .item .item-body .return ul li .desc,
+.attributes > .item .item-body .return ul li .desc,
+.events > .item .item-body .return ul li .desc,
+.properties > .item .item-body .return ul li .desc {
+  line-height: 2.5em;
+}
 .methods > .item:nth-of-type(even),
 .attributes > .item:nth-of-type(even),
 .events > .item:nth-of-type(even),
 .properties > .item:nth-of-type(even) {
-  background-color: #e3e3e3;
+  background-color: rgba(227, 227, 227, 0.5);
 }
 .methods > .item:nth-of-type(even) .prettyprint,
 .attributes > .item:nth-of-type(even) .prettyprint,
@@ -203,6 +213,10 @@
 .intro .description {
   min-height: 1em;
 }
+.intro .description ul {
+  margin: 1em;
+  line-height: 1.5em;
+}
 .description {
   margin: 0;
 }
@@ -212,6 +226,10 @@
   background-color: #dcdfdd;
   margin-right: 1.5em;
   padding: 1em;
+}
+.description ul {
+  margin: 0px;
+  line-height: 0.75em;
 }
 .ui.secondary.pointing.menu .active.item {
   border-color: #4ba575;

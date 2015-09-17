@@ -9,7 +9,8 @@ block content
 					a(href="./" + alias.super + ".html")= alias.super
 			.intro
 				.sub.header= alias.label
-				.description= alias.description || ""
+				div.description
+					p!= alias.description
 			.ui.pointing.secondary.menu
 				if alias.attributes
 					a(class="item active" data-tab="attributes") Attributes
@@ -83,7 +84,7 @@ block content
 														li.param
 															span.name.ui.label.mini.horizontal= param.name
 															span.type= param.type
-															.label!= param.description || param.label
+															p.desc!= param.description || param.label
 										.return
 											span.label Returns:
 											span.type=item.type || "void"
@@ -110,14 +111,14 @@ block content
 														li.param
 															span.name.ui.label.mini.horizontal= param.name
 															span.type Object
-															.label= param.label
+															p.desc= param.label
 															if param.properties
 																ul
 																	each prop in param.properties
 																		li
 																			span.name.ui.label.horizontal=prop.name + ":"
 																			span.type=prop.type || "Object"
-																			div.desc=prop.description
+																			p.desc=prop.description
 										pre.description!=item.description
 										.return
 											span.label Returns:
