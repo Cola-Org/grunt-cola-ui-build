@@ -1,7 +1,7 @@
 {
   "name": "grunt-cola-ui-build",
   "description": "The best Grunt plugin ever.",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "homepage": "https://github.com/Cola-Org/grunt-cola-ui-build",
   "author": {
     "name": "alextong",
@@ -37,7 +37,7 @@
   "dependencies": {
     "js-yaml": "~3.0.1",
     "lodash": "~2.4.1",
-    "jade":"~1.8.0"
+    "jade": "~1.8.0"
   },
   "keywords": [
     "gruntplugin"

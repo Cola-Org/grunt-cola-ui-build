@@ -161,17 +161,19 @@ module.exports = function (grunt) {
 		function classExtendHandler(alias) {
 			if (alias.super) {
 				var superClass = SYMBOLS[alias.super];
-				if (!superClass._ignore) {
-					classExtendHandler(superClass)
-				}
-				_.each(classDocElements, function (name) {
-					unionProps(alias, superClass, name)
-				});
-				_.each(superClass, function (value, key) {
-					if (_.indexOf(classDocElements, key) > -1 && !alias[key]) {
-						alias[key] = value;
+				if (superClass) {
+					if (!superClass._ignore) {
+						classExtendHandler(superClass)
 					}
-				});
+					_.each(classDocElements, function (name) {
+						unionProps(alias, superClass, name)
+					});
+					_.each(superClass, function (value, key) {
+						if (_.indexOf(classDocElements, key) > -1 && !alias[key]) {
+							alias[key] = value;
+						}
+					});
+				}
 			}
 
 			alias._ignore = true
@@ -226,11 +228,20 @@ module.exports = function (grunt) {
 				var tabs = ["attributes", "properties", "methods", "events"];
 				for (var i = 0; i < tabs.length; i++) {
 					var tabName = tabs[i];
-					if (alias[tabName] && alias[tabName].length > 0) {
-						alias.activeTab = tabName;
-						break;
+					if (alias[tabName]) {
+
+						if (alias[tabName].length > 0) {
+							if (!alias.activeTab) {
+								alias.activeTab = tabName;
+							}
+
+						} else {
+
+							delete alias[tabName];
+						}
 					}
 				}
+
 				var html = jade.renderFile(tamplate, {
 					title: name,
 					aliasNames: aliasNames,
