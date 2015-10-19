@@ -66,7 +66,8 @@ module.exports = function (grunt) {
 			header: "Cola UI API-<VERSION>",
 			version: "<VERSION>",
 			readEncoding: grunt.file.defaultEncoding,
-			writeEncoding: grunt.file.defaultEncoding
+			writeEncoding: grunt.file.defaultEncoding,
+			indexPage:"cola.html"
 		});
 
 
@@ -213,6 +214,12 @@ module.exports = function (grunt) {
 		var dest = path.join(process.cwd(), options.output);
 		var tamplate = path.join(__dirname, "..", "templates", "doc.jade");
 		var topNames = ["window"];
+
+		var indexHtml = jade.renderFile( path.join(__dirname, "..", "templates", "index.jade"), {
+			indexPage: options.indexPage
+		});
+		grunt.file.write(path.join(dest,"index.html"), indexHtml);
+
 
 		aliasNames = aliasNames.sort();
 		for (var i = 0; i < topNames.length; i++) {
