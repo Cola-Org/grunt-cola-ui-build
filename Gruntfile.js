@@ -30,7 +30,8 @@ module.exports = function (grunt) {
 		clean: {
 			tests: ['tmp'],
 			build: ["resources"],
-			doc: ["doc"]
+			doc: ["doc"],
+			src: ["test/src"]
 		},
 		copy: {
 			test: {
@@ -128,7 +129,5 @@ module.exports = function (grunt) {
 	// By default, lint and run all tests.
 	grunt.registerTask('default', ['jshint', 'test']);
 	grunt.registerTask('build', ['clean:build', 'copy:build', "concat:build"]);
-	grunt.registerTask('doc', ["clean:doc", 'yamlToDoc', "copy:doc"]);
-
-
+	grunt.registerTask('doc', ["clean:src", "copy:test", "clean:doc", 'yamlToDoc', "copy:doc"]);
 };
