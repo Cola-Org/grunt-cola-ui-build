@@ -67,7 +67,7 @@ module.exports = function (grunt) {
 			version: "<VERSION>",
 			readEncoding: grunt.file.defaultEncoding,
 			writeEncoding: grunt.file.defaultEncoding,
-			indexPage:"cola.html"
+			indexPage: "cola.html"
 		});
 
 
@@ -79,6 +79,7 @@ module.exports = function (grunt) {
 
 		yamlSchema = createYamlSchema(options.customTypes);
 		strictOption = options.strict;
+
 		function parseClass(obj) {
 			if (obj.stereotype === "namespace") {
 				var old = SYMBOLS[obj.name] || {};
@@ -211,14 +212,16 @@ module.exports = function (grunt) {
 				}
 			}
 		});
+
+
 		var dest = path.join(process.cwd(), options.output);
 		var tamplate = path.join(__dirname, "..", "templates", "doc.jade");
 		var topNames = ["window"];
 
-		var indexHtml = jade.renderFile( path.join(__dirname, "..", "templates", "index.jade"), {
+		var indexHtml = jade.renderFile(path.join(__dirname, "..", "templates", "index.jade"), {
 			indexPage: options.indexPage
 		});
-		grunt.file.write(path.join(dest,"index.html"), indexHtml);
+		grunt.file.write(path.join(dest, "index.html"), indexHtml);
 
 
 		aliasNames = aliasNames.sort();
@@ -259,7 +262,24 @@ module.exports = function (grunt) {
 				grunt.file.write(htmlFile, html);
 			}
 		)
-		;
+
+
+		function delDesc(obj) {
+			delete obj["description"];
+			_.each(obj, function (value, key) {
+				if (value instanceof Object) {
+					delDesc(value);
+				}
+			});
+		}
+
+
+		// delDesc(SYMBOLS);
+		//
+		//
+		// var rules = JSON.stringify(SYMBOLS);
+		// console.log(rules);
+
 
 	});
 
